@@ -20,9 +20,25 @@ class SampleClass2
   end
 end
 
+class DelegateToMethods
+  include SimpleDelegate
+
+  delegate :method1, :method2, to_method: :spawn_object
+
+  def spawn_object
+    @object = SampleClass2.new
+  end
+end
+
 describe "SimpleDelegate" do
   it "delegates" do
     sample = SampleClass1.new
+    expect(sample.method1).to eq "method1"
+    expect(sample.method2).to eq "method2"
+  end
+
+  it "delegates to methods" do
+    sample = DelegateToMethods.new
     expect(sample.method1).to eq "method1"
     expect(sample.method2).to eq "method2"
   end
