@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "simple_delegate"
   gem.homepage = "http://github.com/kaspernj/simple_delegate"
   gem.license = "MIT"
-  gem.summary = %(TODO: one-line summary of your gem)
-  gem.description = %(TODO: longer description of your gem)
+  gem.summary = %(A simple library to delegate methods to instance variables)
+  gem.description = %(A simple library to delegate methods to instance variables)
   gem.email = "k@spernj.org"
   gem.authors = ["kaspernj"]
   # dependencies defined in Gemfile
