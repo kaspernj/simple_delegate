@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.authors = ["kaspernj"]
   s.date = "2016-04-08"
-  s.description = "TODO: longer description of your gem"
+  s.description = "A simple library to delegate methods to instance variables"
   s.email = "k@spernj.org"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -29,13 +29,14 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/simple_delegate.rb",
+    "simple_delegate.gemspec",
     "spec/simple_delegate_spec.rb",
     "spec/spec_helper.rb"
   ]
   s.homepage = "http://github.com/kaspernj/simple_delegate"
   s.licenses = ["MIT"]
   s.rubygems_version = "2.2.2"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "A simple library to delegate methods to instance variables"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
