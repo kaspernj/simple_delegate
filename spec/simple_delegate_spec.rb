@@ -3,7 +3,7 @@ require "spec_helper"
 class SampleClass1
   include SimpleDelegate
 
-  delegate :method1, :method2, to: :object
+  delegate :method1, :method2, to_instance_variable: :object
 
   def initialize
     @object = SampleClass2.new
@@ -23,7 +23,7 @@ end
 class DelegateToMethods
   include SimpleDelegate
 
-  delegate :method1, :method2, to_method: :spawn_object
+  delegate :method1, :method2, to: :spawn_object
 
   def spawn_object
     @object = SampleClass2.new
