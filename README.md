@@ -1,6 +1,40 @@
-# simple_delegate
+# SimpleDelegate
 
-Description goes here.
+## Install
+
+Add to your Gemfile and bundle.
+
+```ruby
+gem "simple_delegate"
+```
+
+## How to use
+
+Add to your class and start delegating:
+
+```ruby
+class MyClass
+  include SimpleDelegate
+  
+  delegate :something, to: :another_method
+  
+  def another_method
+    SomeModel.new
+  end
+end
+```
+
+```ruby
+class MyClass
+  include SimpleDelegate
+  
+  delegate :something, to_instance_variable: :some_variable
+  
+  def initialize
+    @some_variable = SomeModel.new
+  end
+end
+```
 
 ## Contributing to simple_delegate
  
