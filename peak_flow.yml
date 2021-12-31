@@ -1,0 +1,18 @@
+rvm: true
+builds:
+  build_1:
+    environment:
+      RUBY_VERSION: 2.7.5
+    name: Ruby 2.7.5
+    script:
+      - rspec
+  build_2:
+    environment:
+      RUBY_VERSION: 3.0.3
+    name: Ruby 3.0.3
+    script:
+      - rspec
+  build_3:
+    name: Rubocop
+    script:
+      - rubocop
