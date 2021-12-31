@@ -42,6 +42,9 @@ Metrics/ClassLength:
 Naming/FileName:
   Enabled: false
 
+RSpec/MultipleExpectations:
+  Enabled: false
+
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
 
