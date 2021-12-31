@@ -16,57 +16,21 @@ Gem::Specification.new do |s|
   s.email = "k@spernj.org"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
-  s.files = [
-    ".document",
-    ".rspec",
-    ".rubocop.yml",
-    "Gemfile",
-    "Gemfile.lock",
-    "LICENSE.txt",
-    "README.rdoc",
-    "Rakefile",
-    "VERSION",
-    "lib/simple_delegate.rb",
-    "simple_delegate.gemspec",
-    "spec/simple_delegate_spec.rb",
-    "spec/spec_helper.rb"
-  ]
+  s.files = Dir["{app,config,db,lib}/**/*", "LICENSE.txt", "Rakefile", "README.md"]
   s.homepage = "http://github.com/kaspernj/simple_delegate"
   s.licenses = ["MIT"]
+  s.metadata["rubygems_mfa_required"] = "true"
   s.rubygems_version = "2.2.2"
   s.required_ruby_version = ">= 2.7"
   s.summary = "A simple library to delegate methods to instance variables"
 
-  if s.respond_to? :specification_version
-    s.specification_version = 4
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new("1.2.0")
-      s.add_development_dependency("best_practice_project", ["= 0.0.9"])
-      s.add_development_dependency("bundler", ["~> 1.0"])
-      s.add_development_dependency("jeweler", ["~> 2.0.1"])
-      s.add_development_dependency("rdoc", ["~> 3.12"])
-      s.add_development_dependency("rspec", ["~> 3.4.0"])
-      s.add_development_dependency("rubocop", ["= 0.39.0"])
-      s.add_dependency("bundler", ["~> 1.0"])
-      s.add_development_dependency("simplecov", [">= 0"])
-    else
-      s.add_dependency("best_practice_project", ["= 0.0.9"])
-      s.add_dependency("best_practice_project", ["= 0.0.9"])
-      s.add_dependency("bundler", ["~> 1.0"])
-      s.add_dependency("jeweler", ["~> 2.0.1"])
-      s.add_dependency("jeweler", ["~> 2.0.1"])
-      s.add_dependency("rdoc", ["~> 3.12"])
-      s.add_dependency("rdoc", ["~> 3.12"])
-      s.add_dependency("rspec", ["~> 3.4.0"])
-      s.add_dependency("rubocop", ["= 0.39.0"])
-      s.add_dependency("rubocop", ["= 0.39.0"])
-      s.add_dependency("simplecov", [">= 0"])
-    end
-  else
-    s.add_dependency("rspec", ["~> 3.4.0"])
-    s.add_dependency("simplecov", [">= 0"])
-  end
-  s.metadata["rubygems_mfa_required"] = "true"
+  s.add_development_dependency "best_practice_project"
+  s.add_development_dependency "bundler"
+  s.add_development_dependency "rake"
+  s.add_development_dependency "rspec"
+  s.add_development_dependency "rubocop"
+  s.add_development_dependency "rubocop-performance"
+  s.add_development_dependency "rubocop-rspec"
 end

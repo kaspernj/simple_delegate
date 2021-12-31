@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    simple_delegate (0.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -11,6 +16,7 @@ GEM
     parser (3.0.3.2)
       ast (~> 2.4.1)
     rainbow (3.0.0)
+    rake (13.0.1)
     regexp_parser (2.2.0)
     rexml (3.2.5)
     rspec (3.10.0)
@@ -52,10 +58,12 @@ PLATFORMS
 DEPENDENCIES
   best_practice_project
   bundler
+  rake
   rspec
-  rubocop (= 1.24.1)
+  rubocop
   rubocop-performance
   rubocop-rspec
+  simple_delegate!
 
 BUNDLED WITH
    2.1.4
