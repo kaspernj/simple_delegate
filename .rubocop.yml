@@ -4,13 +4,30 @@ AllCops:
   Exclude:
     - db/schema.rb
     - spec/dummy/db/schema.rb
+  NewCops: enable
 
-# https://github.com/AtomLinter/linter-rubocop/issues/2
-Style/FileName:
+require:
+  - rubocop-performance
+  - rubocop-rspec
+
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+# Disabled on purpose: https://github.com/bbatsov/rubocop/issues/1758
+Layout/ClosingParenthesisIndentation:
   Enabled: false
 
-Metrics/LineLength:
+Layout/EmptyLines:
+  Enabled: false
+
+Layout/LineLength:
   Max: 160
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
 
 Metrics/MethodLength:
   Max: 50
@@ -21,8 +38,9 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 250
 
-Style/AccessModifierIndentation:
-  EnforcedStyle: outdent
+# https://github.com/AtomLinter/linter-rubocop/issues/2
+Naming/FileName:
+  Enabled: false
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact
@@ -33,7 +51,7 @@ Style/ConditionalAssignment:
 Style/Documentation:
   Enabled: false
 
-Style/EmptyLines:
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/StringLiterals:
@@ -48,16 +66,6 @@ Style/NilComparison:
 Style/SignalException:
   EnforcedStyle: only_raise
 
-Style/MultilineOperationIndentation:
-  EnforcedStyle: indented
-
-Style/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-
 Style/TrivialAccessors:
   ExactNameMatch: true
   Enabled: true
-
-# Disabled on purpose: https://github.com/bbatsov/rubocop/issues/1758
-Style/ClosingParenthesisIndentation:
-  Enabled: false
