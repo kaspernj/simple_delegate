@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/kaspernj/simple_delegate"
   s.licenses = ["MIT"]
   s.metadata["rubygems_mfa_required"] = "true"
-  s.rubygems_version = "2.2.2"
   s.required_ruby_version = ">= 2.7"
   s.summary = "A simple library to delegate methods to instance variables"
 
