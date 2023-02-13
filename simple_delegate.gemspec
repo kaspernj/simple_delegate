@@ -24,12 +24,4 @@ Gem::Specification.new do |s|
   s.metadata["rubygems_mfa_required"] = "true"
   s.required_ruby_version = ">= 2.7"
   s.summary = "A simple library to delegate methods to instance variables"
-
-  s.add_development_dependency "best_practice_project"
-  s.add_development_dependency "bundler"
-  s.add_development_dependency "rake"
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "rubocop"
-  s.add_development_dependency "rubocop-performance"
-  s.add_development_dependency "rubocop-rspec"
 end
