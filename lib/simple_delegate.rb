@@ -8,7 +8,7 @@ module SimpleDelegate
       args.each do |method|
         define_method(method) do |*method_args, **method_opts, &method_blk|
           if opts[:to_instance_variable]
-            object = instance_variable_get("@#{opts.fetch(:to_instance_variable)}")
+            object = instance_variable_get(:"@#{opts.fetch(:to_instance_variable)}")
             raise "Nothing was returned by: #{opts.fetch(:to_instance_variable)}" unless object
           elsif opts[:to]
             object = __send__(opts.fetch(:to))
