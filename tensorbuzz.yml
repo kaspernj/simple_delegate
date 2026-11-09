@@ -6,8 +6,14 @@
 # the lint lane inspects (Gemfile, Rakefile, lib/simple_delegate.rb,
 # simple_delegate.gemspec, spec/simple_delegate_spec.rb, spec/spec_helper.rb), and
 # the two test lanes run `rspec` directly, so they never read Rakefile or
-# .rubocop.yml. `.rspec` is read by rspec only. `.ruby-version` is kept in every
-# lane because it selects the Ruby the shell resolves.
+# .rubocop.yml. `.rspec` is read by rspec only.
+#
+# `.ruby-version` is in every lane because with `rvm: true` the executor wraps every
+# command in `rvm use "$(cat .ruby-version)"`, so that file — not the
+# `environment: RUBY_VERSION` values below, which are labels — selects the Ruby every
+# lane runs. The pin must be a Ruby rvm can install as a binary on the builder: 3.2.2
+# has one for ubuntu/24.04, 2.7.8 does not, and its source compile is what made all
+# three lanes fail.
 #
 # Negations must stay quoted: an unquoted `!glob` is parsed as a YAML tag with no
 # value, so the rule silently vanishes. spec/tensorbuzz_config_spec.rb asserts
