@@ -1,0 +1,72 @@
+# Path filters for the three build lanes (STOE-1199).
+#
+# `**` first, so an unknown path always runs the lane: the filter only ever skips
+# a path this repository proves no lane consumes. The quoted `!` negations are
+# that proven set — `bundle exec rubocop --list-target-files` names the six files
+# the lint lane inspects (Gemfile, Rakefile, lib/simple_delegate.rb,
+# simple_delegate.gemspec, spec/simple_delegate_spec.rb, spec/spec_helper.rb), and
+# the two test lanes run `rspec` directly, so they never read Rakefile or
+# .rubocop.yml. `.rspec` is read by rspec only.
+#
+# `.ruby-version` is in every lane because with `rvm: true` the executor wraps every
+# command in `rvm use "$(cat .ruby-version)"`, so that file — not the
+# `environment: RUBY_VERSION` values below, which are labels — selects the Ruby every
+# lane runs. The pin must be a Ruby rvm can install as a binary on the builder: 3.2.2
+# has one for ubuntu/24.04, 2.7.8 does not, and its source compile is what made all
+# three lanes fail.
+#
+# Negations must stay quoted: an unquoted `!glob` is parsed as a YAML tag with no
+# value, so the rule silently vanishes. spec/tensorbuzz_config_spec.rb asserts
+# the parsed shape for exactly that reason.
+#
+# Everything uncertain still builds: a change to tensorbuzz.yml or peak_flow.yml,
+# a missing, empty or capped changed-path list, and a manual rebuild of a lane
+# that was skipped. Whether a skip acts is the project's `path_filter_mode`
+# (`off` / `shadow` / `enforce`), not something this file decides.
+rvm: true
+builds:
+  build_1:
+    environment:
+      RUBY_VERSION: 2.7.8
+    name: Ruby 2.7.8
+    paths:
+      - "**"
+      - "!*.md"
+      - "!.document"
+      - "!.github/**"
+      - "!.gitignore"
+      - "!LICENSE.txt"
+      - "!Rakefile"
+      - "!.rubocop.yml"
+      - "!VERSION"
+    script:
+      - rspec
+  build_2:
+    environment:
+      RUBY_VERSION: 3.0.3
+    name: Ruby 3.0.3
+    paths:
+      - "**"
+      - "!*.md"
+      - "!.document"
+      - "!.github/**"
+      - "!.gitignore"
+      - "!LICENSE.txt"
+      - "!Rakefile"
+      - "!.rubocop.yml"
+      - "!VERSION"
+    script:
+      - rspec
+  build_3:
+    name: Rubocop
+    paths:
+      - "**"
+      - "!*.md"
+      - "!.document"
+      - "!.github/**"
+      - "!.gitignore"
+      - "!LICENSE.txt"
+      - "!.rspec"
+      - "!VERSION"
+    script:
+      - rubocop
